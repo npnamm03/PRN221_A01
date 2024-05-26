@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessObjects
 {
-    public class BookingReservationDAO 
+    public class BookingReservationDAO: GenericDAO<BookingReservation>
     {
-        
+        public BookingReservationDAO(FuminiHotelManagementContext context) : base(context)
+        {
+
+        }
     }
 }
