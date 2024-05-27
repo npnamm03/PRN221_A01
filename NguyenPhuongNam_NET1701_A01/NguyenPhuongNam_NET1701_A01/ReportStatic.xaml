@@ -9,7 +9,7 @@
         Loaded="Window_Loaded"
         Height="450"
         Width="800">
-    <Grid>
+    <Grid Background="#FF97C6B5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -42,12 +42,11 @@
                     VerticalAlignment="Center"
                     x:Name="endDatePicker"/>
         <Button Content="Show Statistic"
-                Grid.Column="1"
                 Height="40"
                 x:Name="btnStatistic"
                 Click="btnStatistic_Click"
                 Grid.Row="2"
-                HorizontalAlignment="Left" />
+                HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="114,7,0,7" Width="106" Background="#FFA8A9A5" FontFamily="Arial Black" />
         <DataGrid Margin="10"
                   IsReadOnly="True"
                   x:Name="dgData"

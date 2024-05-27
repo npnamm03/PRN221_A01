@@ -38,8 +38,6 @@ namespace DataAccessObjects.Repository
 
         public bool AddCustomer(Customer customer)
         {
-            var checkExist = GetCustomerByCondition(u => u.CustomerId.Equals(customer.CustomerId));
-            if (checkExist != null) return false;
 
             var result = CustomerDAO.Instance.CreateCustomer(customer);
             return result;
@@ -66,6 +64,11 @@ namespace DataAccessObjects.Repository
             var result = CustomerDAO.Instance.DeleteCustomer(id);
 
             return result;
+        }
+
+        public bool CheckExist(string telephone, string email)
+        {
+            return CustomerDAO.Instance.CheckExist(telephone, email);
         }
     }
 }

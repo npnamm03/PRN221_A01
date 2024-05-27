@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:NguyenPhuongNam_NET1701_A01"
                 mc:Ignorable="d"
         Title="frmCustomer"
-        Height="380"
+        Height="384"
         Width="630"
-        Loaded="Window_Loaded">
-    <Grid Margin="0,0,0,14">
+        Loaded="Window_Loaded" Background="#FF97C6B5">
+    <Grid Margin="0,0,0,14" Background="#FF97C6B5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="5*" />
@@ -113,13 +113,13 @@
                         Margin="-20,0,20,0"
                         x:Name="btnCreate"
                         Click="btnCreate_Click"
-                        Grid.RowSpan="2" />
+                        Grid.RowSpan="2" Background="#FFA8A9A5" />
                 <Button Grid.Column="1"
                         Content="Update"
                         x:Name="btnUpdate"
-                        Margin="10,0,-10,0"
+                        Margin="23,0,-23,0"
                         Grid.RowSpan="2"
-                        Click="btnUpdate_Click" />
+                        Click="btnUpdate_Click" Background="#FFA8A9A5" />
             </Grid>
         </StackPanel>
     </Grid>

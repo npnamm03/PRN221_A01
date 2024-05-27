@@ -119,6 +119,10 @@ namespace NguyenPhuongNam_NET1701_A01
             {
                 MessageBox.Show(validate.message);
                 return;
+            } else 
+            if (customerRepository.CheckExist(txtTelephone.ToString(), txtEmailAddress.ToString()))
+            {
+                MessageBox.Show("User is existed!!!");
             }
             else
             {

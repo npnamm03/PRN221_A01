@@ -17,5 +17,6 @@ namespace DataAccessObjects.IRepository
         bool AddCustomer(Customer customerCreate);
         bool DeleteCustomer(int id);
         List<Customer> GetCustomerByCondition(Expression<Func<Customer, bool>> condition);
+        bool CheckExist(string telephone, string email);
     }
 }

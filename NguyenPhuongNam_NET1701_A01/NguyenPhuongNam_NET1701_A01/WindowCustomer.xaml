@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NguyenPhuongNam_NET1701_A01"
-                mc:Ignorable="d"
+        mc:Ignorable="d"
         Title="MemberScreen"
         Height="450"
         Loaded="Window_Loaded"
-        Width="800">
+        Width="800"
+        Background="#FF97C6B5">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
@@ -27,7 +28,7 @@
                     Click="btnLogOut_Click"
                     FontWeight="Bold"
                     Margin="20 0 0 0"
-                    Width="90" />
+                    Width="90" FontFamily="Arial Black" />
         </StackPanel>
         <Button Content="Manage Profile"
                 VerticalAlignment="Top"
@@ -39,7 +40,7 @@
                 Height="30"
                 Margin="20,96,0,0"
                 Grid.RowSpan="2"
-                Width="130" />
+                Width="130" FontFamily="Arial Black" />
         <DataGrid Margin="10"
                   IsReadOnly="True"
                   x:Name="dgData"
@@ -61,6 +62,6 @@
                 x:Name="btnBookingDetail"
                 VerticalAlignment="Top"
                 Height="30"
-                Width="165" Grid.RowSpan="2" />
+                Width="191" Grid.RowSpan="2" FontFamily="Arial Black" />
     </Grid>
 </Window>

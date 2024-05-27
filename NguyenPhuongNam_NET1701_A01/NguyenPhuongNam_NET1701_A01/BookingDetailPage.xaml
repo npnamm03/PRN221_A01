@@ -4,35 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NguyenPhuongNam_NET1701_A01"
-                mc:Ignorable="d"
+        mc:Ignorable="d"
         Title="BookingDetailPage"
         Loaded="Window_Loaded"
         Height="450"
         Width="800">
-    <Grid>
+    <Grid Background="#FFB7D2CE">
         <TextBlock Text="Booking Detail"
                    HorizontalAlignment="Center"
-                   Margin="0,40,0,325"
-                   FontSize="24"
-                   FontWeight="Bold" />
+                   Margin="0,10,0,369"
+                   FontSize="36"
+                   FontWeight="Bold" Foreground="#FF141010" FontFamily="Britannic Bold" />
         <DataGrid Margin="10,164,10,25"
                   FontSize="17"
                   x:Name="dgData"
                   IsReadOnly="True" />
-        <TextBox HorizontalAlignment="Left"
+        <TextBox HorizontalAlignment="Center"
                  Height="25"
-                 Margin="430,114,0,0"
+                 Margin="0,96,0,0"
                  TextWrapping="Wrap"
                  x:Name="txtSearch"
                  VerticalAlignment="Top"
-                 Width="195" />
+                 Width="233" />
         <Button Content="Search"
-                HorizontalAlignment="Left"
+                HorizontalAlignment="Center"
                 x:Name="btnSearch"
-                Height="25"
+                Height="26"
                 Click="btnSearch_Click"
-                Margin="665,114,0,0"
+                Margin="0,126,0,0"
                 VerticalAlignment="Top"
-                Width="100" />
+                Width="124" Foreground="#FF0C0808" FontFamily="Arial Black" BorderBrush="#FFA76868" Background="#FFA8A9A5" />
     </Grid>
 </Window>

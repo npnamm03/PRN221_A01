@@ -8,7 +8,7 @@
         Loaded="Window_Loaded"
         Title="frmRoom"
         Height="440"
-        Width="810">
+        Width="810" Background="#FF97C6B5">
     <Grid Margin="0,0,0,14">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -29,11 +29,9 @@
                RenderTransformOrigin="0.402,0.463"
                Margin="10,0,0,0" />
         <TextBox Grid.Column="1"
-                 Grid.Row="0"
                  VerticalAlignment="Center"
-                 HorizontalAlignment="Stretch"
                  x:Name="txtRoomNumber"
-                 Margin="5" />
+                 Margin="5,0,25,0" Height="22" />
         <!--Telephone-->
         <Label Content="Description:"
                Grid.Column="2"
@@ -41,7 +39,7 @@
                HorizontalAlignment="Center" />
         <RichTextBox Grid.Column="3"
                      VerticalAlignment="Center"
-                     Margin="5,0,10,0">
+                     Margin="5,0,10,0" Height="22">
             <FlowDocument>
                 <Paragraph>
                     <Run x:Name="txtDescription" />
@@ -59,8 +57,7 @@
                  Grid.Row="1"
                  VerticalAlignment="Center"
                  x:Name="txtMaxCapacity"
-                 HorizontalAlignment="Stretch"
-                 Margin="5" />
+                 Margin="5,0,25,0" Height="22" />
         <!--Status-->
         <Label Content="Room Type:"
                Grid.Column="2"
@@ -71,7 +68,7 @@
                   Grid.Row="1"
                   VerticalAlignment="Center"
                   x:Name="cboRoomType"
-                  Margin="5,0,10,0" />
+                  Margin="5,0,10,0" Height="22" />
         <!-- Birthday-->
         <Label Content="Room Status:"
                Grid.Column="0"
@@ -84,7 +81,7 @@
                   Grid.Row="2"
                   x:Name="cboRoomStatus"
                   VerticalAlignment="Top"
-                  Margin="5,46,5,0" />
+                  Margin="5,46,25,0" Height="22" />
         <!--Password-->
         <Label Grid.Column="2"
                Grid.Row="2"
@@ -92,7 +89,7 @@
                HorizontalAlignment="Right"
                Content="Room price/day"
                RenderTransformOrigin="0.529,0.077"
-               Margin="0,39,0,0">
+               Margin="0,46,10,0">
         </Label>
         <TextBox Grid.Column="3"
                  Grid.Row="2"
@@ -100,7 +97,7 @@
                  x:Name="txtRoomPrice"
                  Margin="0,46,0,0"
                  HorizontalAlignment="Center"
-                 Width="270" />
+                 Width="270" Height="22" />
         <StackPanel Grid.Row="3"
                     Grid.ColumnSpan="4"
                     Orientation="Horizontal"
@@ -117,18 +114,18 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
                         Content="Create"
-                        Margin="-20,0,20,0"
+                        Margin="-48,0,20,0"
                         x:Name="btnCreate"
                         Click="btnCreate_Click"
                         Grid.RowSpan="2"
                         Height="30"
-                        VerticalAlignment="Top" />
+                        VerticalAlignment="Top" Background="#FFA8A9A5" FontSize="16" FontFamily="Arial Black" />
                 <Button Grid.Column="1"
                         Content="Update"
                         x:Name="btnUpdate"
-                        Margin="10,0,-10,0"
+                        Margin="10,0,-37,0"
                         Click="btnUpdate_Click"
-                        Grid.RowSpan="2" />
+                        Grid.RowSpan="2" Background="#FFA8A9A5" FontSize="16" FontFamily="Arial Black" />
             </Grid>
         </StackPanel>
     </Grid>

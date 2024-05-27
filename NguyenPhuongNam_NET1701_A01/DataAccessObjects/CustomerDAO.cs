@@ -10,8 +10,6 @@ namespace DataAccessObjects
     {
         private static CustomerDAO? instance;
         private static readonly object instanceLook = new object();
-        private const string adminUser = "admin@FUMiniHotelSystem.com";
-        private const string adminPassword = "@@abc123@@";
         public CustomerDAO() { }
         public static CustomerDAO Instance
         {
@@ -30,13 +28,13 @@ namespace DataAccessObjects
         public Role CheckLogin(string email, string password)
         {
             IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Path.Combine(
-            Directory
-            .GetParent(Directory
-            .GetParent(Directory
-            .GetParent(Directory
-            .GetParent(Directory
-            .GetCurrentDirectory()).FullName).FullName).FullName).FullName, "DataAccessObjects"))
-            .AddJsonFile("appsettings.json", true, true).Build();
+                Directory
+                .GetParent(Directory
+                .GetParent(Directory
+                .GetParent(Directory
+                .GetParent(Directory
+                .GetCurrentDirectory()).FullName).FullName).FullName).FullName, "DataAccessObjects"))
+                .AddJsonFile("appsettings.json", true, true).Build();
             var user = configuration.GetSection("AdminAccount:Email").Value;
             var pass = configuration.GetSection("AdminAccount:Password").Value;
             using var db = new FuminiHotelManagementContext();
@@ -131,6 +129,14 @@ namespace DataAccessObjects
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public bool CheckExist(string telephone, string email)
+        {
+            using var db = new FuminiHotelManagementContext();
+            var customer = db.Customers.FirstOrDefault(u => u.Telephone.Equals(telephone) || u.EmailAddress.Equals(email));
+            if(customer != null) return false;
+            return true;
         }
     }
 }
