@@ -4,9 +4,158 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NguyenPhuongNam_NET1701_A01"
+                WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="WindowAdmin" Height="450" Width="800">
+        Title="AdminScreen"
+        Height="570"
+        Width="1040"
+        Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Width="auto"
+                    Grid.Row="0"
+                    Background="#FFF0F0F0">
+            <TextBlock Text="Welcome"
+                       VerticalAlignment="center"
+                       HorizontalAlignment="center"
+                       FontSize="30"
+                       Foreground="Black"
+                       FontWeight="Bold"
+                       Grid.Row="0" />
+        </StackPanel>
+        <Grid Grid.Row="1"
+              Margin="0,0,25,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        >
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                   
+                    <Menu Margin="0,155,0,-179"
+                          Grid.Row="1"
+                          Background="Transparent">
+                        <Menu.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </Menu.ItemsPanel>
+                        <MenuItem Margin="5,20,0,40"
+                                  FontSize="16"
+                                  Header="Customer Ìnormation"
+                                  x:Name="menuCustomer"
+                                  Click="Customer_Click"></MenuItem>
+                        <MenuItem Margin="5,0,0,40"
+                                  FontSize="16"
+                                  x:Name="menuRoom"
+                                  Header="Room Information"
+                                  Click="Roome_Click"></MenuItem>
+                        <MenuItem FontSize="18"
+                                  Margin="5,0,0,0"
+                                  Header="Report Statistic"
+                                  x:Name="menuReport"
+                                  Click="menuReport_Click"></MenuItem>
+
+                    </Menu>
+                    <Button Content="Log Out"
+                            Height="30"
+                            Click="LogOut_Click"
+                            Width="80"
+                            Margin="16,446,42,-238"
+                            Grid.Row="1" />
+                    <TextBlock Text="Admin"
+                        FontSize="30"
+                        Foreground="Black"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        Margin="20,45,20,154" Grid.Row="1" RenderTransformOrigin="0.874,0.641" />
+                </Grid>
+
+            </StackPanel>
+            <DataGrid Grid.Column="1"
+                      Margin="10,164,0,25"
+                      FontSize="17"
+                      x:Name="dgData"
+                      SelectionChanged="dgData_SelectionChanged"
+                      MouseDoubleClick="dgData_MouseDoubleClick"
+                      IsReadOnly="True" />
+            <Button Grid.Column="1"
+                    x:Name="btnCreate"
+                    Content="Create"
+                    Background="White"
+                    HorizontalAlignment="Left"
+                    Margin="460,50,0,0"
+                    VerticalAlignment="Top"
+                    Height="32"
+                    Width="90"
+                    Click="btnCreate_Click" />
+            <Button Grid.Column="1"
+                    x:Name="btnUpdate"
+                    Click="btnUpdate_Click"
+                    Content="Update"
+                    HorizontalAlignment="Left"
+                    Margin="570,50,0,0"
+                    VerticalAlignment="Top"
+                    Height="32"
+                    Width="90"
+                    Background="White" />
+            <Button Grid.Column="1"
+                    Content="Delete"
+                    x:Name="btnDelete"
+                    HorizontalAlignment="Left"
+                    Margin="680,50,0,0"
+                    VerticalAlignment="Top"
+                    Height="32"
+                    Click="btnDelete_Click"
+                    Width="90"
+                    Background="White" />
+            <GroupBox HorizontalAlignment="Left"
+                      Height="94"
+                      Header="Action"
+                      x:Name="groupBox"
+                      Margin="428,10,0,0"
+                      FontSize="20"
+                      FontWeight="Bold"
+                      VerticalAlignment="Top"
+                      Width="374"
+                      Grid.Column="1" />
+            <Button Grid.Column="1"
+                    Content="Filter By Date"
+                    x:Name="btnFilter"
+                    HorizontalAlignment="Left"
+                    Margin="45,117,0,0"
+                    VerticalAlignment="Top"
+                    Click="btnFilter_Click"
+                    Height="30"
+                    Width="95" />
+            <TextBox Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="20"
+                     Margin="445,119,0,0"
+                     FontSize="12"
+                     TextWrapping="Wrap"
+                     x:Name="txtSearch"
+                     VerticalAlignment="Top"
+                     Width="200" />
+            <Button Grid.Column="1"
+                    Content="Search"
+                    Padding="2"
+                    HorizontalAlignment="Left"
+                    Margin="680,119,0,0"
+                    Click="btnSearch_Click"
+                    x:Name="btnSearch"
+                    VerticalAlignment="Top"
+                    Height="20"
+                    Width="80" />
+        </Grid>
     </Grid>
 </Window>

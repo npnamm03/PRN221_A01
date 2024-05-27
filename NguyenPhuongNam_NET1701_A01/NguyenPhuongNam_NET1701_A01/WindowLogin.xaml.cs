@@ -1,18 +1,8 @@
-﻿using DataAccessObjects.IRepository;
+﻿using DataAccess.Util;
+using DataAccessObjects.Enum;
+using DataAccessObjects.IRepository;
 using DataAccessObjects.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace NguyenPhuongNam_NET1701_A01
 {
@@ -21,17 +11,48 @@ namespace NguyenPhuongNam_NET1701_A01
     /// </summary>
     public partial class WindowLogin : Window
     {
-        private WindowAdmin windowAdmin;
-        private WindowCustomer windowCustomer;
-        ICustomerRepository customer = new CustomerRepository();
+        ICustomerRepository customerRepository = new CustomerRepository();
         public WindowLogin()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                var result = ValidationLogin.ValidateData(txtEmail.Text, txtPassword.Password);
+                if (result.isValid)
+                {
+                    Role login = customerRepository.CheckLogin(txtEmail.Text, txtPassword.Password);
+                    if (login == Role.Admin)
+                    {
+                        WindowAdmin screen = new WindowAdmin();
+                        this.Close();
+                        screen.ShowDialog();
+                    }
+                    else if (login == Role.Customer)
+                    {
+                        var customer = customerRepository.GetCustomerByCondition(c => c.EmailAddress.Equals(txtEmail.Text)).FirstOrDefault();
+                        WindowCustomer memberScreen = new WindowCustomer();
+                        memberScreen.ID = customer.CustomerId;
+                        this.Close();
+                        memberScreen.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User not found");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(result.message);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

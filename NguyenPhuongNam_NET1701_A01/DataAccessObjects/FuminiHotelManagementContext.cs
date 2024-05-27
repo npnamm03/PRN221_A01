@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BusinessObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace BusinessObjects;
+namespace DataAccessObjects;
 
 public partial class FuminiHotelManagementContext : DbContext
 {
@@ -28,10 +27,15 @@ public partial class FuminiHotelManagementContext : DbContext
 
     private string GetConnectionString()
     {
-        IConfiguration configuration = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsettings.json", true, true).Build();
-        return configuration["ConnectionStrings:DefaultConnectionString"];
+        IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Path.Combine(
+            Directory
+            .GetParent(Directory
+            .GetParent(Directory
+            .GetParent(Directory
+            .GetParent(Directory
+            .GetCurrentDirectory()).FullName).FullName).FullName).FullName, "DataAccessObjects"))
+            .AddJsonFile("appsettings.json", true, true).Build();
+        return configuration.GetConnectionString("DefaultConnectionStringDB");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

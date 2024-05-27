@@ -1,7 +1,7 @@
 ﻿using BusinessObjects;
-using DataAccessObjects.Admin;
 using DataAccessObjects.Enum;
 using DataAccessObjects.IRepository;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -14,38 +14,26 @@ namespace DataAccessObjects.Repository
 {
     public class CustomerRepository: ICustomerRepository
     {
-        private AdminAccount _admin;
 
-        public CustomerRepository(AdminAccount admin)
+        public CustomerRepository()
         {
-            _admin = admin;
         }
 
-        public Role? CheckLogin(string email, string password)
+        public Role CheckLogin(string email, string password)
         {
-            if (email.Equals(_admin.AdminEmail?.ToString()) && password.Equals(_admin.AdminPassword?.ToString()))
-            {
-                return Role.Admin;
-            }
-
-            var allCus = CustomerDAO.Instance.GetAll();
-            if (!allCus.Where(u => u.EmailAddress.Equals(email) && u.Password.Equals(password)).ToList().IsNullOrEmpty())
-            {
-                return Role.Customer;
-            }
-
-            return Role.None;
+            var result = CustomerDAO.Instance.CheckLogin(email, password);
+            return result;
         }
 
-        public ICollection<Customer> GetAllCustomers()
+        public IEnumerable<Customer> GetAll()
         {
             var allCus = CustomerDAO.Instance.GetAll();
             return allCus;
         }
 
-        public ICollection<Customer> GetCustomerByCondition(Expression<Func<Customer, bool>> condition)
+        public List<Customer> GetCustomerByCondition(Expression<Func<Customer, bool>> condition)
         {
-            return CustomerDAO.Instance.GetByCondition(condition);
+            return CustomerDAO.Instance.GetCustomerByCondition(condition);
         }
 
         public bool AddCustomer(Customer customer)
@@ -53,7 +41,7 @@ namespace DataAccessObjects.Repository
             var checkExist = GetCustomerByCondition(u => u.CustomerId.Equals(customer.CustomerId));
             if (checkExist != null) return false;
 
-            var result = CustomerDAO.Instance.Add(customer);
+            var result = CustomerDAO.Instance.CreateCustomer(customer);
             return result;
         }
 
@@ -65,7 +53,7 @@ namespace DataAccessObjects.Repository
             checkExist.CustomerFullName = customer.CustomerFullName;
             checkExist.Telephone = customer.Telephone;
             checkExist.CustomerBirthday = customer.CustomerBirthday;
-            var result =  CustomerDAO.Instance.Update(checkExist);
+            var result =  CustomerDAO.Instance.UpdateCustomer(checkExist);
 
             return result;
         }
@@ -75,14 +63,9 @@ namespace DataAccessObjects.Repository
             var checkExist = GetCustomerByCondition(u => u.CustomerId.Equals(id)).FirstOrDefault();
             if (checkExist == null) return false;
 
-            var result = CustomerDAO.Instance.Delete(checkExist);
+            var result = CustomerDAO.Instance.DeleteCustomer(id);
 
             return result;
-        }
-
-        public ICollection<Customer> GetCustomers()
-        {
-            throw new NotImplementedException();
         }
     }
 }

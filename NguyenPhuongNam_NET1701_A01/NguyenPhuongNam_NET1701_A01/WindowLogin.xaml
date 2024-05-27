@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NguyenPhuongNam_NET1701_A01"
         mc:Ignorable="d"
-        Title="WindowLogin" Height="410" Width="650"
+        Title="Login"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Height="313"
+        Width="567"
         Background="#FAF3DD">
-    <Grid Margin="0,0,44,17">
+    <Grid Margin="0,0,25,17">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
@@ -24,12 +28,14 @@
            Grid.Row="1" 
            VerticalAlignment="Center" 
            HorizontalAlignment="Right" 
-           Margin="0 0 5 0" FontSize="16"/>
-        <TextBox Text="{Binding Email, Mode=TwoWay}"
+           Margin="0 0 5 0" FontSize="16"
+           FontWeight="Bold"/>
+        <TextBox
          Grid.Column="1"
          Grid.Row="1"
          VerticalAlignment="Center"
-         Margin="5,0,5,0" Height="36"/>
+         Margin="5,0,5,0" Height="36"
+         x:Name="txtEmail"/>
 
         <!--Password-->
         <TextBlock Text="Password:" 
@@ -37,9 +43,10 @@
            Grid.Row="2" 
            VerticalAlignment="Center" 
            HorizontalAlignment="Right" 
-           Margin="0 0 5 0" FontSize="16"/>
-        <PasswordBox PasswordChanged="PasswordBox_PasswordChanged"
-         x:Name="passwordBox" 
+           Margin="0 0 5 0" FontSize="16"
+           FontWeight="Bold"/>
+        <PasswordBox 
+         x:Name="txtPassword"
          Grid.Column="1"
          Grid.Row="2"
          VerticalAlignment="Center"                
@@ -52,16 +59,47 @@
             VerticalAlignment="Top" Margin="0,0,35,0">
             <TextBlock Text="{Binding ErrorMsg, Mode=TwoWay}" Foreground="Red" Margin="5" HorizontalAlignment="Left"/>
             <Button 
-        Content="Login"
-        Width="70" 
-        Height="35"
-        Command="{Binding LoginButtonClickCommand}"
-        CommandParameter="{Binding ElementName=LoginWindow}" FontSize="16" Click="Button_Click_1"/>
+                Content="Login"
+                Width="101" 
+                Height="33"
+                x:Name="btnLogin"
+                FontSize="16" Click="btnLogin_Click"
+                
+                Foreground="White"
+                Background="Black">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="LoginBorder"
+                            Background="Black"
+                            CornerRadius="16">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                                            <Setter Property="Background"
+                                    Value="AliceBlue"
+                                    TargetName="LoginBorder" />
+                                            <Setter Property="TextBlock.Foreground"
+                                    Value="Black"
+                                    TargetName="LoginBorder" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
-        <TextBlock Text="Welcome" 
-            Grid.Column="1" 
-            VerticalAlignment="Top" 
-            HorizontalAlignment="Center" 
-            Margin="117,47,0,0" FontSize="24" Height="37" Width="240"/>
+        <TextBlock Text="Login"
+           FontSize="30"
+           HorizontalAlignment="Left" 
+           Margin="169,15,0,15"
+           FontWeight="Bold" Grid.Column="1"/>
     </Grid>
 </Window>

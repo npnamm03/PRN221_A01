@@ -11,11 +11,11 @@ namespace DataAccessObjects.IRepository
 {
     public interface ICustomerRepository
     {
-        ICollection<Customer> GetCustomers();
-        ICollection<Customer> GetCustomerByCondition(Expression<Func<Customer, bool>> condition);
-        Role? CheckLogin(string email, string password);
-        bool AddCustomer(Customer member);
-        bool UpdateCustomer(Customer member);
+        IEnumerable<Customer> GetAll();
+        Role CheckLogin(string email, string password);
+        bool UpdateCustomer(Customer customerUpdate);
+        bool AddCustomer(Customer customerCreate);
         bool DeleteCustomer(int id);
+        List<Customer> GetCustomerByCondition(Expression<Func<Customer, bool>> condition);
     }
 }
