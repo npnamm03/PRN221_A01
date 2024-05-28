@@ -4,21 +4,9 @@ using DataAccessObjects.IRepository;
 using DataAccessObjects.Repository;
 using Microsoft.IdentityModel.Tokens;
 using NguyenPhuongNam_NET1701_A01.Mappers;
-using System;
-using System.Buffers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace NguyenPhuongNam_NET1701_A01
 {
@@ -272,7 +260,7 @@ namespace NguyenPhuongNam_NET1701_A01
         {
             if ((customerId.ToString().IsNullOrEmpty() || customerId == 0) && menuCustomer.IsChecked == true)
             {
-                System.Windows.MessageBox.Show("Please pick member to update");
+                System.Windows.MessageBox.Show("Please pick customer to update");
                 return;
             }
             if ((roomId.ToString().IsNullOrEmpty() || roomId == 0) && menuRoom.IsChecked == true)
@@ -481,18 +469,18 @@ namespace NguyenPhuongNam_NET1701_A01
             {
                 if (customerId == 0)
                 {
-                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Please pick member to delete");
+                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Please pick customer to delete");
                     return;
                 }
                 else
                 {
-                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to delete this member?", "Confirm Delete", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to delete this customer?", "Confirm Delete", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
                     if (result == System.Windows.MessageBoxResult.Yes)
                     {
                         var deleteSuccess = customerRepository.DeleteCustomer(customerId);
                         if (deleteSuccess == false)
                         {
-                            System.Windows.MessageBox.Show("Delete fail");
+                            System.Windows.MessageBox.Show("Delete fail!!!");
                         }
                         LoadCustomer();
                     }

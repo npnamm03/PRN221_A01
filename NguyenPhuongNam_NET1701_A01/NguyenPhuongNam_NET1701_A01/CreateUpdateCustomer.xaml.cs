@@ -2,19 +2,7 @@
 using DataAccess.Util;
 using DataAccessObjects.IRepository;
 using DataAccessObjects.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace NguyenPhuongNam_NET1701_A01
 {
@@ -101,13 +89,13 @@ namespace NguyenPhuongNam_NET1701_A01
                 var result = customerRepository.UpdateCustomer(customer);
                 if (result)
                 {
-                    MessageBox.Show("Update successfully");
+                    MessageBox.Show("Update successfully!!!");
                     this.DialogResult = true;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong when updated");
+                    MessageBox.Show("Something went wrong when updated!!!");
                 }
             }
         }
@@ -138,13 +126,13 @@ namespace NguyenPhuongNam_NET1701_A01
                 var result = customerRepository.AddCustomer(customer);
                 if (result)
                 {
-                    MessageBox.Show("Create successfully");
+                    MessageBox.Show("Create successfully!!!");
                     this.DialogResult = true;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong when create");
+                    MessageBox.Show("Something went wrong when create!!!");
                 }
             }
 

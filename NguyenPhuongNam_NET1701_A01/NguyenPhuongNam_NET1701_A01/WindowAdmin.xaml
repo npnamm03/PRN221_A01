@@ -53,7 +53,7 @@
                                   FontSize="16"
                                   Header="Customer Information"
                                   x:Name="menuCustomer"
-                                  Click="Customer_Click" Height="40" Background="#FFA5E3E8" FontFamily="Rockwell"></MenuItem>
+                                  Click="Customer_Click" Height="40" Background="#FFA5E3E8" FontFamily="Rockwell" Width="186"></MenuItem>
                         <MenuItem Margin="5,0,0,40"
                                   FontSize="16"
                                   x:Name="menuRoom"
