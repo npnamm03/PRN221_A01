@@ -27,7 +27,7 @@ namespace NguyenPhuongNam_NET1701_A01.Mappers
             }
             else
             {
-                throw new InvalidOperationException("Invalid roomStatus value");
+                throw new InvalidOperationException("Invalid RoomStatus value");
             }
         }
     }
